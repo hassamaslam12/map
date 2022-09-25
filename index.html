@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="one">
+        tomorrow's Weather of Karachi
+        <h4 id="result"></h2>
+        <h4 id="highest"></h2>
+        <h4 id="lowest"></h2>
+            
+<h4>avg : <h4 id="avg"></h4></h4>
+threhshold : 29<br>
+above threshold : <h4 id="aboveThreshold"></h4>%<br>
+below threshold : <h4 id="belowThreshold"></h4>%
+    </div>
+    <script>
+        let temperatures  = [27, 27, 27, 27,27 , 26, 26, 26, 27 ,28, 29 , 30, 31, 32, 31, 31 , 30, 30,29, 28, 27, 27, 27, 27 ] 
+        var result = ``
+        for (let i = 0; i < temperatures.length; i++) {
+            
+             result = `${result} <br> In the ${i+1}th hour of tomorrow temperature will be ${temperatures[i]}`
+            }
+            document.querySelector("#result").innerHTML = result;
+        `<br> <br>`
+        var highest = ``,highestTemp=0
+        for (let i = 0; i < temperatures.length; i++) {
+            
+            if(temperatures[i]>highestTemp){
+                highestTemp = temperatures[i]
+                highest = `The highest temperature of tomorrow will be ${highestTemp}`
+            }
+            
+        }
+        document.querySelector("#highest").innerHTML=highest
+        var lowest = ``,lowestTemp=temperatures[0]
+        for (let i = 0; i < temperatures.length; i++) {
+            
+            if( lowestTemp > temperatures[i]){
+                lowestTemp = temperatures[i]
+                lowest = `The lowest temperature of tomorrow will be ${lowestTemp}`
+            }
+            
+        }
+        document.querySelector("#lowest").innerHTML=lowest
+        var avg,sum = 0
+        for (let i = 0; i <temperatures.length; i++) {
+            sum = sum +temperatures[i]
+            avg = sum/(temperatures.length)
+            
+        }
+        document.querySelector("#avg").innerHTML = avg;
+        var aboveThreshold
+        var aboveThresholdQuantity = 0
+        for (let i = 0; i < temperatures.length; i++) {
+            
+            if(temperatures[i]>28){
+                aboveThresholdQuantity++;
+            }
+            
+            aboveThreshold = aboveThresholdQuantity*4.166
+        }
+        
+        document.querySelector("#aboveThreshold").innerHTML = aboveThreshold;
+        var belowThreshold
+        var belowThresholdQuantity = 0
+        for (let i = 0; i < temperatures.length; i++) {
+            
+            if(temperatures[i]<29){
+                belowThresholdQuantity++;
+            }
+            
+            belowThreshold = belowThresholdQuantity*4.166
+        }
+        
+        document.querySelector("#belowThreshold").innerHTML = belowThreshold;
+
+    </script>
+
+
+
+</body>
+</html>
